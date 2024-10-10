@@ -1,5 +1,7 @@
 import { cwd } from 'node:process';
+import { printInfo } from '../helpers/printText.js';
 
-export default () => {
-  process.stdout.write(`You are currently in ${cwd()}\n`);
+const printWorkingDirectory = () => {
+  printInfo(`You are currently in ${cwd()}\n`);
 };
+export default printWorkingDirectory;

@@ -1,4 +1,6 @@
+import { print } from '../helpers/printText.js';
+
 const welcomeUser = (username) => {
-  process.stdout.write(`Welcome to the File Manager, ${username}!\n`);
+  print(`Welcome to the File Manager, ${username}!\n`);
 };
 export default welcomeUser;

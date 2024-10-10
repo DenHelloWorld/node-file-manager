@@ -1,25 +1,18 @@
-// import {
-//   copyFile,
-//   moveFile,
-//   deleteFile,
-//   renameFile,
-// } from './commands/fileOperations';
-// import { getOSInfo } from './commands/systemInfo';
-// import { hashFile } from './commands/hash';
-// import { compressFile, decompressFile } from './commands/compression';
 import * as readline from 'node:readline/promises';
 import getUsername from './utils/getUsername.js';
 import welcomeUser from './utils/welcomeUser.js';
 import goodbyeUser from './utils/goodbyeUser.js';
 import handleCommand from './helpers/handleCommand.js';
+import printWorkingDirectory from './utils/printWorkingDirectory.js';
+import toHomeDirectory from './utils/toHomeDirectory.js';
 
 const app = (args) => {
   const username = getUsername(args);
-  welcomeUser(username);
-
   const command = args[0];
   const params = args.slice(1);
-  handleCommand(command, params);
+  toHomeDirectory();
+  welcomeUser(username);
+  printWorkingDirectory();
 
   const rl = readline
     .createInterface({
@@ -37,6 +30,7 @@ const app = (args) => {
       }
 
       handleCommand(newCommand, newParams);
+      printWorkingDirectory();
     })
     .on('SIGINT', () => {
       goodbyeUser(username);
