@@ -19,4 +19,3 @@ export const printText = (text, color) => {
 export const prinSuccess = (text) => printText(text, 'green');
 export const printError = (text) => printText(text, 'red');
 export const printInfo = (text) => printText(text, 'blue');
-export const print = (text) => printText(text, 'white');

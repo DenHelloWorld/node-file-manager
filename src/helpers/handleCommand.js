@@ -1,7 +1,7 @@
 import COMMANDS from '../commands/commands.js';
 import { printError } from './printText.js';
 
-const handleCommand = (command, params) => {
+const handleCommand = async (command, params) => {
   const cmd = COMMANDS[command];
 
   if (!cmd || params.length !== cmd.args) {
@@ -10,7 +10,7 @@ const handleCommand = (command, params) => {
   }
 
   try {
-    cmd.fn(...params);
+    await cmd.fn(...params);
   } catch {
     printError('Operation failed');
   }

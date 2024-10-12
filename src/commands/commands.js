@@ -7,6 +7,7 @@ import {
 import { getOSInfo } from './systemInfo.js';
 import { hashFile } from './hash.js';
 import { compressFile, decompressFile } from './compression.js';
+import up from './up.js';
 
 const COMMANDS = {
   copy: { fn: (src, dest) => copyFile(src, dest), args: 2 },
@@ -17,5 +18,6 @@ const COMMANDS = {
   hash: { fn: (file) => hashFile(file), args: 1 },
   compress: { fn: (file, dest) => compressFile(file, dest), args: 2 },
   decompress: { fn: (file, dest) => decompressFile(file, dest), args: 2 },
+  up: { fn: () => up(), args: 0 },
 };
 export default COMMANDS;

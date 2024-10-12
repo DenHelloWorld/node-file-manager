@@ -6,7 +6,7 @@ import handleCommand from './helpers/handleCommand.js';
 import printWorkingDirectory from './utils/printWorkingDirectory.js';
 import toHomeDirectory from './utils/toHomeDirectory.js';
 
-const app = (args) => {
+const app = async (args) => {
   const username = getUsername(args);
   const command = args[0];
   const params = args.slice(1);
@@ -19,7 +19,7 @@ const app = (args) => {
       input: process.stdin,
       output: process.stdout,
     })
-    .on('line', (input) => {
+    .on('line', async (input) => {
       const inputArgs = input.trim().split(' ');
       const newCommand = inputArgs[0];
       const newParams = inputArgs.slice(1);
@@ -29,7 +29,7 @@ const app = (args) => {
         rl.close();
       }
 
-      handleCommand(newCommand, newParams);
+      await handleCommand(newCommand, newParams);
       printWorkingDirectory();
     })
     .on('SIGINT', () => {
@@ -38,4 +38,4 @@ const app = (args) => {
     });
 };
 
-app(process.argv.slice(2));
+await app(process.argv.slice(2));
