@@ -20,15 +20,18 @@ const app = async (args) => {
       output: process.stdout,
     })
     .on('line', async (input) => {
-      const inputArgs = input.trim().split(' ');
-      const newCommand = inputArgs[0];
-      const newParams = inputArgs.slice(1);
+      const inputArgs = input.trim().match(/(\S+)(?:\s+(.+))?/);
+      // Забрал команду
+      const newCommand = inputArgs[1];
+      // Забрал параметры
+      const newParams = inputArgs[2] ? [inputArgs[2].trim()] : [];
+      // Вывел в консоль, на скрине виден результат
+      console.log('newParams', newParams);
 
       if (newCommand === '.exit') {
         goodbyeUser(username);
         rl.close();
       }
-
       await handleCommand(newCommand, newParams);
       printWorkingDirectory();
     })

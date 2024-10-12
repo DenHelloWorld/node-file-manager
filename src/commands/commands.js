@@ -24,6 +24,6 @@ const COMMANDS = {
   up: { fn: async () => await up(), args: 0 },
   cd: { fn: async (path) => await cd(path), args: 1 },
   ls: { fn: async () => await ls(), args: 0 },
-  cat: { fn: async (path) => await cat(path), args: 1 },
+  cat: { fn: (filePath) => cat(filePath), args: 1 },
 };
 export default COMMANDS;

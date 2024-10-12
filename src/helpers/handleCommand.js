@@ -4,13 +4,13 @@ import { printError } from './printText.js';
 const handleCommand = async (command, params) => {
   const cmd = COMMANDS[command];
 
-  if (!cmd || params.length !== cmd.args) {
+  if (!cmd) {
     printError('Invalid input');
     return;
   }
 
   try {
-    await cmd.fn(...params);
+    await cmd.fn(...params); 
   } catch {
     printError('Operation failed');
   }
