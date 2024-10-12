@@ -6,12 +6,12 @@ const ls = async () => {
     const currentDir = cwd();
     const files = await readdir(currentDir, { withFileTypes: true });
 
-    const tabularData = files.map((file) => ({
+    const tableData = files.map((file) => ({
       name: file.name,
       type: file.isDirectory() ? 'directory' : 'file',
     }));
 
-    console.table(tabularData);
+    console.table(tableData);
   } catch {
     throw new Error();
   }

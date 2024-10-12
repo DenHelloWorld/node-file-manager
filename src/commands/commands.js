@@ -10,6 +10,7 @@ import { compressFile, decompressFile } from './compression.js';
 import up from './up.js';
 import cd from './cd.js';
 import ls from './ls.js';
+import cat from './cat.js';
 
 const COMMANDS = {
   copy: { fn: (src, dest) => copyFile(src, dest), args: 2 },
@@ -23,5 +24,6 @@ const COMMANDS = {
   up: { fn: async () => await up(), args: 0 },
   cd: { fn: async (path) => await cd(path), args: 1 },
   ls: { fn: async () => await ls(), args: 0 },
+  cat: { fn: async (path) => await cat(path), args: 1 },
 };
 export default COMMANDS;
