@@ -9,6 +9,7 @@ import { hashFile } from './hash.js';
 import { compressFile, decompressFile } from './compression.js';
 import up from './up.js';
 import cd from './cd.js';
+import ls from './ls.js';
 
 const COMMANDS = {
   copy: { fn: (src, dest) => copyFile(src, dest), args: 2 },
@@ -19,7 +20,8 @@ const COMMANDS = {
   hash: { fn: (file) => hashFile(file), args: 1 },
   compress: { fn: (file, dest) => compressFile(file, dest), args: 2 },
   decompress: { fn: (file, dest) => decompressFile(file, dest), args: 2 },
-  up: { fn: () => up(), args: 0 },
-  cd: { fn: (path) => cd(path), args: 1 },
+  up: { fn: async () => await up(), args: 0 },
+  cd: { fn: async (path) => await cd(path), args: 1 },
+  ls: { fn: async () => await ls(), args: 0 },
 };
 export default COMMANDS;
