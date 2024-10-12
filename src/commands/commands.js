@@ -12,6 +12,7 @@ import cd from './cd.js';
 import ls from './ls.js';
 import cat from './cat.js';
 import add from './add.js';
+import rn from './rn.js';
 
 const COMMANDS = {
   copy: { fn: (src, dest) => copyFile(src, dest) },
@@ -27,5 +28,8 @@ const COMMANDS = {
   ls: { fn: async () => await ls() },
   cat: { fn: async (filePath) => await cat(filePath) },
   add: { fn: async (fileName) => await add(fileName) },
+  rn: {
+    fn: async (pathToFile, newFileName) => await rn(pathToFile, newFileName), args: 2,
+  },
 };
 export default COMMANDS;

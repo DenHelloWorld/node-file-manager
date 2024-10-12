@@ -12,8 +12,8 @@ const handleCommand = async (command, params) => {
 
   try {
     await cmd.fn(...params);
-  } catch {
-    printError('Operation failed');
+  } catch (e) {
+    printError(`'Operation failed' ${e.message}`);
   } finally {
     printWorkingDirectory();
   }
