@@ -10,12 +10,14 @@ const cat = (filePath) => {
 
   const readStream = fs.createReadStream(fullPath, { encoding: 'utf8' });
 
-  pipeline(readStream, process.stdout, (error) => {
-    if (error) {
-      printError(`Error reading file: ${error.message}`);
-    } else {
-      process.stdout.write('\nFinished reading the file.\n');
-    }
+  readStream.on('error', (error) => {
+    printError(`Error reading file: ${error.message}`);
+  });
+
+  readStream.pipe(process.stdout);
+
+  readStream.on('end', () => {
+    process.stdout.write('\n');
   });
 };
 
