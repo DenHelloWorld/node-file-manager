@@ -7,6 +7,6 @@ export const printText = (text, color) => {
     process.stdout.write(`${COLORS.white}${text}${COLORS.reset}\n`);
   }
 };
-export const prinSuccess = (text) => printText(text, 'green');
+export const printSuccess = (text) => printText(text, 'green');
 export const printError = (text) => printText(text, 'red');
 export const printInfo = (text) => printText(text, 'blue');

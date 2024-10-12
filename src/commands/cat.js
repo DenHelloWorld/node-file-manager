@@ -6,18 +6,20 @@ import { pipeline } from 'stream';
 import { cwd } from 'node:process';
 
 const cat = (filePath) => {
-  const fullPath = path.resolve(cwd(), filePath);
+  return new Promise((resolve, reject) => {
+    const fullPath = path.resolve(cwd(), filePath);
+    const readStream = fs.createReadStream(fullPath, { encoding: 'utf8' });
 
-  const readStream = fs.createReadStream(fullPath, { encoding: 'utf8' });
+    readStream.on('error', (error) => {
+      reject(new Error());
+    });
 
-  readStream.on('error', (error) => {
-    printError(`Error reading file: ${error.message}`);
-  });
+    readStream.on('end', () => {
+      process.stdout.write('\n');
+      resolve();
+    });
 
-  readStream.pipe(process.stdout);
-
-  readStream.on('end', () => {
-    process.stdout.write('\n');
+    readStream.pipe(process.stdout);
   });
 };
 

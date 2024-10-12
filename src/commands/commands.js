@@ -11,19 +11,21 @@ import up from './up.js';
 import cd from './cd.js';
 import ls from './ls.js';
 import cat from './cat.js';
+import add from './add.js';
 
 const COMMANDS = {
-  copy: { fn: (src, dest) => copyFile(src, dest), args: 2 },
-  move: { fn: (src, dest) => moveFile(src, dest), args: 2 },
-  delete: { fn: (file) => deleteFile(file), args: 1 },
-  rename: { fn: (oldName, newName) => renameFile(oldName, newName), args: 2 },
-  'os-info': { fn: () => getOSInfo(), args: 0 },
-  hash: { fn: (file) => hashFile(file), args: 1 },
-  compress: { fn: (file, dest) => compressFile(file, dest), args: 2 },
-  decompress: { fn: (file, dest) => decompressFile(file, dest), args: 2 },
-  up: { fn: async () => await up(), args: 0 },
-  cd: { fn: async (path) => await cd(path), args: 1 },
-  ls: { fn: async () => await ls(), args: 0 },
-  cat: { fn: (filePath) => cat(filePath), args: 1 },
+  copy: { fn: (src, dest) => copyFile(src, dest) },
+  move: { fn: (src, dest) => moveFile(src, dest) },
+  delete: { fn: (file) => deleteFile(file) },
+  rename: { fn: (oldName, newName) => renameFile(oldName, newName) },
+  'os-info': { fn: () => getOSInfo() },
+  hash: { fn: (file) => hashFile(file) },
+  compress: { fn: (file, dest) => compressFile(file, dest) },
+  decompress: { fn: (file, dest) => decompressFile(file, dest) },
+  up: { fn: async () => await up() },
+  cd: { fn: async (path) => await cd(path) },
+  ls: { fn: async () => await ls() },
+  cat: { fn: async (filePath) => await cat(filePath) },
+  add: { fn: async (fileName) => await add(fileName) },
 };
 export default COMMANDS;
