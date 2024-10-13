@@ -5,9 +5,6 @@ import { printSuccess } from '../helpers/printText.js';
 
 const mv = async (path, directory) => {
   const sourceFilePath = resolve(path);
-  const fileName = basename(sourceFilePath);
-  const destinationFilePath = resolve(directory, fileName);
-
   try {
     await cp(path, directory);
     await rm(sourceFilePath);
