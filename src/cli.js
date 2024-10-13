@@ -2,14 +2,12 @@ import * as readline from 'node:readline/promises';
 import getUsername from './utils/getUsername.js';
 import welcomeUser from './utils/welcomeUser.js';
 import goodbyeUser from './utils/goodbyeUser.js';
-import handleCommand from './helpers/handleCommand.js';
 import printWorkingDirectory from './utils/printWorkingDirectory.js';
 import toHomeDirectory from './utils/toHomeDirectory.js';
+import handleInput from './helpers/handleInput.js';
 
 const app = async (args) => {
   const username = getUsername(args);
-  const command = args[0];
-  const params = args.slice(1);
   toHomeDirectory();
   welcomeUser(username);
   printWorkingDirectory();
