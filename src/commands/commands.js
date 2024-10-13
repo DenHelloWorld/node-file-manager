@@ -1,12 +1,4 @@
-import {
-  copyFile,
-  moveFile,
-  deleteFile,
-  renameFile,
-} from './fileOperations.js';
-import { getOSInfo } from './systemInfo.js';
-import { hashFile } from './hash.js';
-import { compressFile, decompressFile } from './compression.js';
+import getOsInfo from './os.js';
 import up from './up.js';
 import cd from './cd.js';
 import ls from './ls.js';
@@ -15,17 +7,12 @@ import add from './add.js';
 import rn from './rn.js';
 import cp from './cp.js';
 import rm from './rm.js';
+import mv from './mv.js';
 
 const COMMANDS = {
-  rm: { fn: (pathToFile) => rm(pathToFile), args: 1 },
-  copy: { fn: (src, dest) => copyFile(src, dest), args: 2 },
-  move: { fn: (src, dest) => moveFile(src, dest), args: 2 },
-  delete: { fn: (file) => deleteFile(file), args: 1 },
-  rename: { fn: (oldName, newName) => renameFile(oldName, newName), args: 2 },
-  'os-info': { fn: () => getOSInfo(), args: 0 },
-  hash: { fn: (file) => hashFile(file), args: 1 },
-  compress: { fn: (file, dest) => compressFile(file, dest), args: 2 },
-  decompress: { fn: (file, dest) => decompressFile(file, dest), args: 2 },
+  mv: { fn: async (path, directory) => await mv(path, directory), args: 2 },
+  rm: { fn: async (pathToFile) => await rm(pathToFile), args: 1 },
+  os: { fn: async (...args) => await getOsInfo(...args), args: 0 },
   up: { fn: async () => await up(), args: 0 },
   cd: { fn: async (path) => await cd(path), args: 1 },
   ls: { fn: async () => await ls(), args: 0 },

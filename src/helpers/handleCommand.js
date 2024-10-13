@@ -6,6 +6,7 @@ const handleCommand = async (command, params) => {
   const cmd = COMMANDS[command];
 
   if (!cmd) {
+    printError('Invalid input');
     printError(
       `Command "${command}" not found. Available commands: ${Object.keys(
         COMMANDS
@@ -14,11 +15,12 @@ const handleCommand = async (command, params) => {
     return;
   }
 
-  if (params.length !== cmd.args) {
+  if (cmd.args !== 0 && params.length !== cmd.args) {
+    printError('Invalid input');
     printError(
-      `Invalid input: the number of arguments for command "${command}" should be ${cmd.args}. ` +
-        `If your arguments contain spaces, please wrap them in quotes.`
+      `The number of arguments for command "${command}" should be ${cmd.args}.`
     );
+    printError('If your argument contain spaces, please wrap it in quotes.');
     return;
   }
 
