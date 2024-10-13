@@ -20,7 +20,10 @@ const app = async (args) => {
       output: process.stdout,
     })
     .on('line', async (input) => {
-      const inputArgs = input.trim().split(' ');
+      const inputArgs = input
+        .trim()
+        .match(/(?:[^\s'"]+|['"][^'"]*['"])/g)
+        .map((arg) => arg.replace(/['"]/g, ''));
       const newCommand = inputArgs[0];
       const newParams = inputArgs.slice(1);
 
@@ -30,7 +33,6 @@ const app = async (args) => {
       }
 
       await handleCommand(newCommand, newParams);
-      printWorkingDirectory();
     })
     .on('SIGINT', () => {
       goodbyeUser(username);

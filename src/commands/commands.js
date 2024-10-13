@@ -11,6 +11,9 @@ import up from './up.js';
 import cd from './cd.js';
 import ls from './ls.js';
 import cat from './cat.js';
+import add from './add.js';
+import rn from './rn.js';
+import cp from './cp.js';
 
 const COMMANDS = {
   copy: { fn: (src, dest) => copyFile(src, dest), args: 2 },
@@ -25,5 +28,14 @@ const COMMANDS = {
   cd: { fn: async (path) => await cd(path), args: 1 },
   ls: { fn: async () => await ls(), args: 0 },
   cat: { fn: async (path) => await cat(path), args: 1 },
+  add: { fn: async (newFileName) => await add(newFileName), args: 1 },
+  rn: {
+    fn: async (path, newFilename) => await rn(path, newFilename),
+    args: 2,
+  },
+  cp: {
+    fn: async (path, directory) => await cp(path, directory),
+    args: 2,
+  },
 };
 export default COMMANDS;
