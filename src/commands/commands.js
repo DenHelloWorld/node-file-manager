@@ -14,8 +14,10 @@ import cat from './cat.js';
 import add from './add.js';
 import rn from './rn.js';
 import cp from './cp.js';
+import rm from './rm.js';
 
 const COMMANDS = {
+  rm: { fn: (pathToFile) => rm(pathToFile), args: 1 },
   copy: { fn: (src, dest) => copyFile(src, dest), args: 2 },
   move: { fn: (src, dest) => moveFile(src, dest), args: 2 },
   delete: { fn: (file) => deleteFile(file), args: 1 },
