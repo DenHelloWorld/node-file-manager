@@ -4,7 +4,7 @@ import welcomeUser from './utils/welcomeUser.js';
 import goodbyeUser from './utils/goodbyeUser.js';
 import printWorkingDirectory from './utils/printWorkingDirectory.js';
 import toHomeDirectory from './utils/toHomeDirectory.js';
-import handleInput from './helpers/handleInput.js';
+import handleCommand from './helpers/handleCommand.js';
 
 const app = async (args) => {
   const username = getUsername(args);

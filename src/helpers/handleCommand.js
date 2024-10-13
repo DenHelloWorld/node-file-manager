@@ -1,6 +1,5 @@
 import COMMANDS from '../commands/commands.js';
 import printWorkingDirectory from '../utils/printWorkingDirectory.js';
-import printWorkingDirectory from '../utils/printWorkingDirectory.js';
 import { printError } from './printText.js';
 
 const handleCommand = async (command, params) => {
