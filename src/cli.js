@@ -5,6 +5,8 @@ import goodbyeUser from './utils/goodbyeUser.js';
 import printWorkingDirectory from './utils/printWorkingDirectory.js';
 import toHomeDirectory from './utils/toHomeDirectory.js';
 import handleCommand from './helpers/handleCommand.js';
+import { printError } from './helpers/printText.js';
+import COMMANDS from './commands/commands.js';
 
 const app = async (args) => {
   const username = getUsername(args);
@@ -18,7 +20,16 @@ const app = async (args) => {
       output: process.stdout,
     })
     .on('line', async (input) => {
-      if (!input) return;
+      if (!input) {
+        printError('Invalid input');
+        printError(
+          `Command not found. Available commands: ${Object.keys(COMMANDS).join(
+            ', '
+          )}`
+        );
+        printWorkingDirectory();
+        return;
+      }
       const inputArgs = input
         .trim()
         .match(/(?:[^\s'"]+|['"][^'"]*['"])/g)
