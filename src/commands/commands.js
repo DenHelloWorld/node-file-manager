@@ -9,8 +9,14 @@ import cp from './cp.js';
 import rm from './rm.js';
 import mv from './mv.js';
 import hash from './hash.js';
+import compress from './compress.js';
 
 const COMMANDS = {
+  compress: {
+    fn: async (pathToFile, destination) =>
+      await compress(pathToFile, destination),
+    args: 2,
+  },
   hash: { fn: async (pathTofFile) => await hash(pathTofFile), args: 1 },
   mv: { fn: async (path, directory) => await mv(path, directory), args: 2 },
   rm: { fn: async (pathToFile) => await rm(pathToFile), args: 1 },
