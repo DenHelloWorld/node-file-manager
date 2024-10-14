@@ -28,6 +28,7 @@ const app = async (args) => {
       if (newCommand === '.exit') {
         goodbyeUser(username);
         rl.close();
+        return;
       }
 
       await handleCommand(newCommand, newParams);
