@@ -12,6 +12,7 @@ const handleCommand = async (command, params) => {
         COMMANDS
       ).join(', ')}`
     );
+    printWorkingDirectory();
     return;
   }
 
@@ -21,6 +22,7 @@ const handleCommand = async (command, params) => {
       `The number of arguments for command "${command}" should be ${cmd.args}.`
     );
     printError('If your argument contain spaces, please wrap it in quotes.');
+    printWorkingDirectory();
     return;
   }
 
