@@ -10,11 +10,17 @@ import rm from './rm.js';
 import mv from './mv.js';
 import hash from './hash.js';
 import compress from './compress.js';
+import decompress from './decompress.js';
 
 const COMMANDS = {
   compress: {
     fn: async (pathToFile, destination) =>
       await compress(pathToFile, destination),
+    args: 2,
+  },
+  decompress: {
+    fn: async (pathToFile, destination) =>
+      await decompress(pathToFile, destination),
     args: 2,
   },
   hash: { fn: async (pathTofFile) => await hash(pathTofFile), args: 1 },
