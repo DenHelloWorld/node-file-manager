@@ -13,7 +13,7 @@ const up = async () => {
   if (parentStats.ino !== currentStats.ino) {
     process.chdir(parentDir);
   } else {
-    throw new Error();
+    throw new Error('You are in the root directory');
   }
 };
 export default up;
