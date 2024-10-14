@@ -17,8 +17,6 @@ const ls = async () => {
     const tableData = [...directories, ...regularFiles];
 
     console.table(tableData);
-
-    console.table(tableData);
   } catch {
     throw new Error();
   }

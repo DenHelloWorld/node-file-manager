@@ -24,22 +24,26 @@ const copyFileStream = (source, destination) => {
 const cp = async (path, directory) => {
   const sourceFilePath = resolve(path);
   const fileName = basename(sourceFilePath);
-  let destinationFilePath = resolve(directory, fileName);
+  const destinationFilePath = resolve(directory, fileName);
 
   try {
+    printInfo(
+      `Starting to copy file from ${sourceFilePath} to ${destinationFilePath}...`
+    );
+
     await access(destinationFilePath, constants.F_OK);
-    destinationFilePath = resolve(directory, `copy_${fileName}`);
+
+    throw new Error(
+      `File already exists at ${destinationFilePath}. Copying aborted.`
+    );
   } catch (error) {
     if (error.code !== 'ENOENT') {
-      printError(error.message);
-      return;
+      throw new Error(`Error checking file existence: ${error.message}`);
     }
+
+    await copyFileStream(sourceFilePath, destinationFilePath);
+
+    printInfo(`File successfully copied to ${destinationFilePath}`);
   }
-
-  printInfo(
-    `Starting to copy file from ${sourceFilePath} to ${destinationFilePath}...`
-  );
-
-  return copyFileStream(sourceFilePath, destinationFilePath);
 };
 export default cp;
