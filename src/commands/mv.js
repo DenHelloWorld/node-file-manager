@@ -1,4 +1,4 @@
-import { resolve, basename } from 'node:path';
+import { resolve } from 'node:path';
 import cp from './cp.js';
 import rm from './rm.js';
 import { printSuccess } from '../helpers/printText.js';

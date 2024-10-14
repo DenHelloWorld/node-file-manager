@@ -1,7 +1,6 @@
 import { printError, printText } from '../helpers/printText.js';
 import { createReadStream } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { pipeline } from 'stream';
 import { cwd } from 'node:process';
 import handleStreamError from '../helpers/handleStreamError.js';

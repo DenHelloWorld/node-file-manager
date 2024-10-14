@@ -8,8 +8,10 @@ import rn from './rn.js';
 import cp from './cp.js';
 import rm from './rm.js';
 import mv from './mv.js';
+import hash from './hash.js';
 
 const COMMANDS = {
+  hash: { fn: async (pathTofFile) => await hash(pathTofFile), args: 1 },
   mv: { fn: async (path, directory) => await mv(path, directory), args: 2 },
   rm: { fn: async (pathToFile) => await rm(pathToFile), args: 1 },
   os: { fn: async (...args) => await getOsInfo(...args), args: 0 },
