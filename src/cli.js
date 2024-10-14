@@ -18,6 +18,7 @@ const app = async (args) => {
       output: process.stdout,
     })
     .on('line', async (input) => {
+      if (!input) return;
       const inputArgs = input
         .trim()
         .match(/(?:[^\s'"]+|['"][^'"]*['"])/g)
