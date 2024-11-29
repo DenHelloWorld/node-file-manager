@@ -58,30 +58,37 @@ const archInfo = async () => {
   });
 };
 
+const availableCommands = {
+  '--EOL': eolInfo,
+  '--cpus': cpuInfo,
+  '--homedir': homedirInfo,
+  '--username': usernameInfo,
+  '--architecture': archInfo,
+};
+
 const getOsInfo = async (...params) => {
+  if (params.length === 0) {
+    throw new Error(
+      `No commands provided. Available commands: ${Object.keys(
+        availableCommands
+      ).join(', ')}`
+    );
+  }
+
   for (const command of params) {
+    const cmdFn = availableCommands[command];
+    if (!cmdFn) {
+      printError(`Command "${command}" not recognized.`);
+      printInfo(
+        `Available commands: ${Object.keys(availableCommands).join(', ')}`
+      );
+      continue;
+    }
+
     try {
-      switch (command) {
-        case '--EOL':
-          await eolInfo();
-          break;
-        case '--cpus':
-          await cpuInfo();
-          break;
-        case '--homedir':
-          await homedirInfo();
-          break;
-        case '--username':
-          await usernameInfo();
-          break;
-        case '--architecture':
-          await archInfo();
-          break;
-        default:
-          printError(`Command "${command}" not recognized.`);
-      }
+      await cmdFn();
     } catch (error) {
-      throw new Error(error.message);
+      throw new Error(`Error executing "${command}": ${error.message}`);
     }
   }
 };
