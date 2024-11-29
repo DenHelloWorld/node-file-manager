@@ -1,6 +1,5 @@
 # File Management CLI Application
-### This Node.js application provides a set of commands to perform common file management tasks such as compression, decompression, file hashing, directory navigation, and more. It is designed for command-line usage with asynchronous operations.
-
+### This Node.js application provides a set of commands to perform common file management tasks such as compression, decompression, file hashing, directory navigation, and more. The goal of the project is to familiarize yourself with the Node JS framework.
 ## Features
 - File compression and decompression using gzip.
 - SHA256 hash calculation for files.
