@@ -39,7 +39,7 @@ const COMMANDS = {
   rm: {
     fn: async (pathToFile) => await rm(pathToFile),
     args: 1,
-    description: 'Remove a file',
+    description: 'Remove a file or directory',
   },
   os: {
     fn: async (...args) => await getOsInfo(...args),
