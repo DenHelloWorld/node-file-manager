@@ -5,13 +5,14 @@ import goodbyeUser from './utils/goodbyeUser.js';
 import printWorkingDirectory from './utils/printWorkingDirectory.js';
 import toHomeDirectory from './utils/toHomeDirectory.js';
 import handleCommand from './helpers/handleCommand.js';
-import { printError } from './helpers/printText.js';
+import { printError, printInfo } from './helpers/printText.js';
 import COMMANDS from './commands/commands.js';
 
 const app = async (args) => {
   const username = getUsername(args);
   toHomeDirectory();
   welcomeUser(username);
+  printInfo(`Enter 'help' to see a list of commands`);
   printWorkingDirectory();
 
   const rl = readline
