@@ -20,5 +20,6 @@ cd node-file-manager
 ```
 3. Run application:
 ```bash
-npm run start
+npm run start --username=YoursName
 ```
+> `username` parameter is optional
